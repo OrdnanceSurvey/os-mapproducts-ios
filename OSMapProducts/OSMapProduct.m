@@ -56,3 +56,25 @@ NSInteger OSWkIDFromSpatialReference(OSSpatialReference spatialReference) {
     NSString *name = NSStringFromOSSpatialReference(spatialReference);
     return [name integerValue];
 }
+
+OSBaseMapStyle OSStyleFromLayerName(NSString *layerName) {
+    NSString *first = [[layerName componentsSeparatedByString:@"%20"] firstObject];
+    if ([first isEqualToString:NSStringFromOSBaseMapStyle(OSBaseMapStyleOutdoor)]) {
+        return OSBaseMapStyleOutdoor;
+    } else if ([first isEqualToString:NSStringFromOSBaseMapStyle(OSBaseMapStyleLight)]) {
+        return OSBaseMapStyleLight;
+    } else if ([first isEqualToString:NSStringFromOSBaseMapStyle(OSBaseMapStyleNight)]) {
+        return OSBaseMapStyleNight;
+    } else if ([first isEqualToString:NSStringFromOSBaseMapStyle(OSBaseMapStyleLeisure)]) {
+        return OSBaseMapStyleLeisure;
+    }
+    return OSBaseMapStyleRoad;
+}
+
+OSSpatialReference OSSpatialReferenceFromLayerName(NSString *layerName) {
+    NSString *last = [[layerName componentsSeparatedByString:@"%20"] lastObject];
+    if ([last isEqualToString:NSStringFromOSSpatialReference(OSSpatialReferenceBNG)]) {
+        return OSSpatialReferenceBNG;
+    }
+    return OSSpatialReferenceWebMercator;
+}

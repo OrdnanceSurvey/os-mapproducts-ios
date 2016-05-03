@@ -77,4 +77,19 @@
     }).to.raise(NSInvalidArgumentException);
 }
 
+- (void)testItIsPossibleToExtractTheBaseMapLayerFromAString {
+    expect(OSStyleFromLayerName(@"Road%203857")).to.equal(OSBaseMapStyleRoad);
+    expect(OSStyleFromLayerName(@"Outdoor%203857")).to.equal(OSBaseMapStyleOutdoor);
+    expect(OSStyleFromLayerName(@"Light%203857")).to.equal(OSBaseMapStyleLight);
+    expect(OSStyleFromLayerName(@"Night%203857")).to.equal(OSBaseMapStyleNight);
+    expect(OSStyleFromLayerName(@"Leisure%203857")).to.equal(OSBaseMapStyleLeisure);
+    expect(OSStyleFromLayerName(@"random")).to.equal(OSBaseMapStyleRoad);
+}
+
+- (void)testItIsPossibleToExtractTheSpatialReferenceFromAString {
+    expect(OSSpatialReferenceFromLayerName(@"Road%203857")).to.equal(OSSpatialReferenceWebMercator);
+    expect(OSSpatialReferenceFromLayerName(@"Road%2027700")).to.equal(OSSpatialReferenceBNG);
+    expect(OSSpatialReferenceFromLayerName(@"random")).to.equal(OSSpatialReferenceWebMercator);
+}
+
 @end

@@ -66,3 +66,21 @@ NSString *NSStringFromOSMapLayer(OSBaseMapStyle style, OSSpatialReference spatia
  *  @return Well known id of the supplied spatial reference, e.g. '27700' for BNG
  */
 NSInteger OSWkIDFromSpatialReference(OSSpatialReference spatialReference);
+
+/**
+ *  Extracts the base map style from a layer name
+ *
+ *  @param layerName The name of the layer, likely generated from `NSStringFromOSMapLayer`
+ *
+ *  @return The extracted style or `OSBaseMapStyleRoad` if none could be determined
+ */
+OSBaseMapStyle OSStyleFromLayerName(NSString *layerName);
+
+/**
+ *  Extracts teh spatial lreference from a layer name
+ *
+ *  @param layerName The name of the layer, likely generated from `NSStringFromOSMapLayer`
+ *
+ *  @return The extracted spatial reference or `OSSpatialReferenceWebMercator` if none could be determined
+ */
+OSSpatialReference OSSpatialReferenceFromLayerName(NSString *layerName);
