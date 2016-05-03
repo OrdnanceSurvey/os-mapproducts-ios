@@ -59,6 +59,11 @@ typedef NS_ENUM(NSUInteger, OSBaseMapStyle) {
 NSString *NSStringFromOSMapLayer(OSBaseMapStyle style, OSSpatialReference spatialReference);
 
 /**
+ *  Return the name to use for the style
+ */
+NSString *NSStringFromOSBaseMapStyle(OSBaseMapStyle style);
+
+/**
  *  Get the well known id from the spatial reference.
  *
  *  @param spatialReference The spatial reference
